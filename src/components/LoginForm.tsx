@@ -93,7 +93,8 @@ export const LoginForm = ({ onLogin }: LoginFormProps) => {
           title: "تم تسجيل الدخول بنجاح",
           description: `مرحباً ${actualUsername}`,
         });
-        onLogin(userType, actualUsername);
+        // For single users, pass the mobile number (username), not the display name
+        onLogin(userType, userType === "single" ? username : actualUsername);
       } else {
         toast({
           title: "خطأ في تسجيل الدخول",
